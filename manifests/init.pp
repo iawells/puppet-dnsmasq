@@ -1,4 +1,4 @@
-class dnsmasq($only_dns = true) {
+class dnsmasq($only_dns = true, $puppet_ip = false) {
     package { "dnsmasq":
         ensure => present
     }
@@ -13,6 +13,14 @@ class dnsmasq($only_dns = true) {
 
     file { "/etc/dnsmasq.conf":
         content => template("dnsmasq/dnsmasq.conf.erb"),
+        owner => root,
+        group => root,
+        mode => 0644,
+        notify => Exec["reload-dnsmasq"]
+    }
+
+    file { "/etc/dnsmasq-additional-hosts":
+        content => template("dnsmasq/dnsmasq-additional-hosts.erb"),
         owner => root,
         group => root,
         mode => 0644,
