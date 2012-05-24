@@ -1,4 +1,4 @@
-class dnsmasq($only_dns = true, $puppet_ip = false) {
+class dnsmasq($only_dns = true, $puppet_ip = false, $domain = false) {
     package { "dnsmasq":
         ensure => present
     }

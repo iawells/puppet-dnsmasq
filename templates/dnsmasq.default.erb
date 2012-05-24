@@ -15,6 +15,7 @@
 # so if you just keep your old version of this file nothing will break.
 
 #DOMAIN_SUFFIX=`dnsdomainname`
+<% if domain %>DOMAIN_SUFFIX=<%=domain%><%end%>
 #DNSMASQ_OPTS="--conf-file=/etc/dnsmasq.alt"
 
 # Whether or not to run the dnsmasq daemon; set to 0 to disable.
